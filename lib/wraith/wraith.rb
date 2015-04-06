@@ -4,7 +4,7 @@ class Wraith::Wraith
   attr_accessor :config
 
   def initialize(config_name)
-    @config = YAML::load(File.open("configs/#{config_name}.yaml"))
+    @config = YAML::load(ERB.new(File.read("configs/#{config_name}.yaml")).result)[ENV]
   end
 
   def base_browser
