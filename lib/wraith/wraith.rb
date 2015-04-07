@@ -1,10 +1,11 @@
 require 'yaml'
+require 'erb'
 
 class Wraith::Wraith
   attr_accessor :config
 
   def initialize(config_name)
-    @config = YAML::load(ERB.new(File.read("configs/#{config_name}.yaml")).result)[ENV]
+    @config = YAML::load(ERB.new(File.read("configs/#{config_name}.yaml")).result)
   end
 
   def base_browser
